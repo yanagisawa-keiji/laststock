@@ -10,6 +10,7 @@ export default function Home() {
     // 後でここに検索処理（DB/API）を実装
     console.log("検索:", query);
   };
+  
 
   return (
     <main className="hero">
