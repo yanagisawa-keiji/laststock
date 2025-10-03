@@ -1,32 +1,78 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState, FormEvent } from "react";
 
 export default function Home() {
   const [query, setQuery] = useState("");
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    alert("検索機能は準備中です");
+    // 🔽 後でここに検索処理を書く
+    console.log("検索キーワード:", query);
   };
 
   return (
-    <main style={{ textAlign: "center", marginTop: "5rem" }}>
-      <h1>Laststock</h1>
-      <p>サルートのラストストックを探すサービス（準備中）</p>
+    <main className="hero">
+      <h1>Laststock.jp</h1>
+      <p className="subtitle">サルートのラストストックを、もう一度手に入れる。</p>
 
-      <form onSubmit={onSubmit} style={{ marginTop: "1rem" }}>
+      <form className="search" onSubmit={handleSearch}>
         <input
           type="text"
+          placeholder="型番・モチーフを入力"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="型番 または モチーフを入力"
-          style={{ padding: "0.5rem", width: "260px" }}
         />
-        <button type="submit" style={{ marginLeft: "1rem", padding: "0.5rem 1rem" }}>
-          検索
-        </button>
+        <button type="submit">探す</button>
       </form>
+
+      <footer>© 2025 Laststock.jp</footer>
+
+      <style jsx>{`
+        .hero {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: linear-gradient(135deg, #008080, #40e0d0);
+          color: #fff;
+          text-align: center;
+          font-family: 'Noto Serif JP', serif;
+        }
+        h1 {
+          font-size: 3rem;
+          margin-bottom: 20px;
+        }
+        .subtitle {
+          font-size: 1.2rem;
+          margin-bottom: 40px;
+        }
+        .search {
+          display: flex;
+          gap: 10px;
+        }
+        input {
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          width: 250px;
+        }
+        button {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          background: gold;
+          color: #111;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        footer {
+          margin-top: 50px;
+          font-size: 0.9rem;
+          color: #eee;
+        }
+      `}</style>
     </main>
   );
 }
