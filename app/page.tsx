@@ -7,7 +7,7 @@ export default function Home() {
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    // 後でここに検索処理（DB/API）を実装
+    // 今はコンソール出力だけ。あとでAPIやDBに繋げる。
     console.log("検索:", query);
   };
 
@@ -15,7 +15,9 @@ export default function Home() {
     <main className="hero">
       <div className="overlay">
         <h1>Laststock.jp</h1>
-        <p className="subtitle">サルートのラストストックを、もう一度手に入れる。</p>
+        <p className="subtitle">
+          サルートのラストストックを、もう一度手に入れる。
+        </p>
 
         <form className="search" onSubmit={handleSearch}>
           <input
@@ -36,33 +38,31 @@ export default function Home() {
           display: flex;
           justify-content: center;
           align-items: center;
-          /* 明るめペールブルーのグラデーション */
-          background: linear-gradient(135deg, #a7d8f0, #e6f7ff);
+          /* 背景に写真＋グラデーションのオーバーレイ */
+          background: 
+            linear-gradient(135deg, rgba(167, 216, 240, 0.7), rgba(230, 247, 255, 0.7)),
+            url("/bg.jpg") center/cover no-repeat;
           padding: 24px;
         }
         .overlay {
           width: 100%;
           max-width: 820px;
           text-align: center;
-          /* 白の半透明カードで明るい印象をキープ */
-          background: rgba(255, 255, 255, 0.88);
-          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.92);
+          border-radius: 18px;
           padding: 56px 40px;
-          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
         }
         h1 {
           font-size: 3.2rem;
-          line-height: 1.15;
           margin: 0 0 16px;
-          /* 上品なゴールド */
-          color: #d4af37;
+          color: #d4af37; /* 上品ゴールド */
           font-family: "Playfair Display", "Noto Serif JP", serif;
-          letter-spacing: 0.5px;
         }
         .subtitle {
           margin: 0 0 28px;
-          font-size: 1.15rem;
-          color: #334155; /* 濃いめグレー/ネイビー寄りで可読性UP */
+          font-size: 1.2rem;
+          color: #334155;
           font-family: "Noto Serif JP", serif;
         }
         .search {
@@ -74,7 +74,7 @@ export default function Home() {
           width: 280px;
           padding: 12px 14px;
           border-radius: 10px;
-          border: 1px solid #cbd5e1; /* 明るめボーダー */
+          border: 1px solid #cbd5e1;
           background: #ffffff;
           color: #0f172a;
           outline: none;
@@ -92,11 +92,9 @@ export default function Home() {
           padding: 12px 22px;
           border: none;
           border-radius: 10px;
-          /* 明るいブルーでコントラスト、金ボタンより清潔感 */
           background: #00aaff;
           color: #ffffff;
           font-weight: 700;
-          letter-spacing: 0.4px;
           cursor: pointer;
           box-shadow: 0 6px 14px rgba(0, 170, 255, 0.25);
           transition: transform 0.05s ease, background 0.2s ease, box-shadow 0.2s ease;
@@ -115,7 +113,7 @@ export default function Home() {
           font-family: "Noto Serif JP", serif;
         }
 
-        /* スマホ最適化 */
+        /* スマホ */
         @media (max-width: 520px) {
           h1 {
             font-size: 2.4rem;
