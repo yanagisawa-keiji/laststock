@@ -1,4 +1,7 @@
 /* ====== 基本設定 ====== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* 筆記体フォント：Great Vibes（上品でややクラシック） */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
