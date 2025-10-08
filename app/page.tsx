@@ -41,13 +41,13 @@ export default function Home() {
           <div className="rounded-3xl bg-white/85 shadow-[0_10px_30px_rgba(0,0,0,.08)] ring-1 ring-emerald-200/50 backdrop-blur">
             <form onSubmit={handleSubmit} className="flex flex-col gap-3 p-5 md:p-6">
               <input value={motif} onChange={(e)=>setMotif(e.target.value)}
-                className="w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
+                className="w-full max-w-md mx-auto rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
                 placeholder="モチーフ（例：バタフライ）" />
               <input value={color} onChange={(e)=>setColor(e.target.value)}
-                className="w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
+                lassName="w-full max-w-md mx-auto rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
                 placeholder="色（例：青緑）" />
               <input value={size} onChange={(e)=>setSize(e.target.value)}
-                className="w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
+                className="w-full max-w-md mx-auto rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
                 placeholder="サイズ（例：F70 / M）" />
               <button type="submit"
                 className="w-full rounded-2xl px-6 py-3 font-semibold text-white bg-[linear-gradient(135deg,#1e6f6d,theme(colors.emerald.500))] ring-1 ring-black/10 shadow-[0_8px_20px_rgba(0,0,0,.06)] hover:brightness-110 hover:ring-black/20 active:brightness-95 transition">
