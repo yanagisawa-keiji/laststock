@@ -4,22 +4,28 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
+// 置き換え：ItemCard（画像プレースホルダ内蔵＋タイポ調整）
 function ItemCard(props: any) {
   const { sku, brand, series, motif = [], color = [], size = [], image_url } = props;
   return (
     <div className="rounded-2xl border border-emerald-200/60 bg-white/90 backdrop-blur shadow-md p-4 flex gap-4">
-      <div className="relative w-28 h-28 rounded-xl overflow-hidden border">
+      <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden border bg-white">
         {image_url ? (
-          <img src={image_url} alt={sku || "item"} className="w-28 h-28 object-cover" />
+          <img src={image_url} alt={sku || "item"} className="w-full h-full object-cover" />
         ) : (
-          <div className="w-28 h-28 grid place-items-center text-xs text-gray-500">No Image</div>
+          <svg viewBox="0 0 120 120" className="w-full h-full text-emerald-200">
+            <rect x="0" y="0" width="120" height="120" fill="currentColor" />
+            <g fill="white" opacity="0.8">
+              <circle cx="38" cy="46" r="16" />
+              <rect x="24" y="70" width="72" height="28" rx="6" />
+            </g>
+          </svg>
         )}
       </div>
-      <div className="text-left">
-        <div className="text-sm text-gray-500">
-          {brand}{series ? ` / ${series}` : ""}
-        </div>
-        <div className="text-lg font-semibold">{sku || "No SKU"}</div>
+
+      <div className="text-left leading-relaxed break-words">
+        <div className="text-sm text-gray-500">{brand}{series ? ` / ${series}` : ""}</div>
+        <div className="text-lg font-semibold tracking-wide">{sku || "No SKU"}</div>
         <div className="mt-1 text-sm text-gray-700">モチーフ：{motif.join("・") || "―"}</div>
         <div className="text-sm text-gray-700">色：{color.join("・") || "―"}</div>
         <div className="text-sm text-gray-700">サイズ：{size.join("・") || "―"}</div>
@@ -27,6 +33,7 @@ function ItemCard(props: any) {
     </div>
   );
 }
+
 
 function SearchClient() {
   const sp = useSearchParams();
@@ -49,6 +56,12 @@ function SearchClient() {
     <main className="min-h-dvh bg-gradient-to-b from-emerald-50 via-white to-emerald-100 text-center py-20">
       <section className="mx-auto max-w-5xl px-6">
         <h1 className="brand-title">Laststock.jp</h1>
+// 見出し付近に「戻る」導線を追加（SearchClientのreturn内、<h1>の下あたり）
+<div className="mt-3">
+  <a href="/" className="text-sm underline text-emerald-700 hover:no-underline">← トップへ戻る</a>
+</div>
+
+        
         <h2 className="text-2xl font-bold text-brand-primary">検索結果</h2>
         <div className="mt-2 text-sm text-gray-600">
           条件：{motif || "(モチーフなし)"} / {color || "(色なし)"} / {size || "(サイズなし)"}
