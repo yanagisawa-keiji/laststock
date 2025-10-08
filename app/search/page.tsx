@@ -1,19 +1,16 @@
-// app/search/page.tsx
 "use client";
 
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-// 小物：バッジ
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-emerald-200/70 bg-emerald-50/60 px-2 py-0.5 text-xs text-emerald-800">
+    <span className="inline-flex items-center rounded-full border border-emerald-200/70 bg-emerald-50/80 px-2 py-0.5 text-xs text-emerald-800">
       {children}
     </span>
   );
 }
 
-// スケルトン（ローディング時）
 function SkeletonCard() {
   return (
     <div className="rounded-2xl border border-emerald-200/60 bg-white/95 shadow-md p-4 animate-pulse">
@@ -26,11 +23,10 @@ function SkeletonCard() {
   );
 }
 
-// 画像プレースホルダ付きカード
 function ItemCard(props: any) {
   const { sku, brand, series, motif = [], color = [], size = [], image_url } = props;
   return (
-    <div className="rounded-2xl border border-emerald-200/60 bg-white/95 shadow-md p-4 flex flex-col gap-3">
+    <div className="rounded-2xl border border-emerald-200/60 bg-white/95 shadow-md p-4 flex flex-col gap-3 hover:shadow-lg transition">
       <div className="relative w-full h-28 rounded-xl overflow-hidden border bg-white">
         {image_url ? (
           <img src={image_url} alt={sku || "item"} className="w-full h-full object-cover" />
@@ -87,23 +83,22 @@ function SearchClient() {
   }, [motif, color, size]);
 
   return (
-    <main className="min-h-dvh bg-gradient-to-b from-emerald-50 via-white to-emerald-100 text-center py-16">
+    <main className="min-h-dvh text-center py-16">
       <section className="mx-auto max-w-6xl px-6">
         <h1 className="brand-title">Laststock.jp</h1>
-        <h2 className="text-3xl md:text-4xl font-bold text-brand-primary mt-2">検索結果</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-brand-primary/90 mt-2">検索結果</h2>
 
         <div className="mt-3">
-          <a href="/" className="text-sm underline text-emerald-700 hover:no-underline">← トップへ戻る</a>
+          <a href="/" className="text-sm underline text-emerald-800 hover:no-underline">← トップへ戻る</a>
         </div>
 
-        <div className="mt-4 inline-flex items-center gap-3 rounded-xl bg-white/80 px-4 py-2 border border-emerald-200/60 shadow-sm">
+        <div className="mt-4 inline-flex items-center gap-3 rounded-xl bg-white/85 px-4 py-2 border border-emerald-200/60 shadow-sm">
           <span className="text-sm text-gray-700">{queryLabel}</span>
-          <span className="text-xs text-emerald-700 font-semibold bg-emerald-50 border border-emerald-200/70 rounded-full px-2 py-0.5">
+          <span className="text-xs text-emerald-900 font-semibold bg-emerald-50 border border-emerald-200/70 rounded-full px-2 py-0.5">
             {loading ? "検索中…" : `${data.total} 件`}
           </span>
         </div>
 
-        {/* 結果リスト */}
         {loading ? (
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
@@ -127,6 +122,5 @@ export default function Page() {
     </Suspense>
   );
 }
-
-// SSG時のCSRバイアウトを避ける
 export const dynamic = "force-dynamic";
+

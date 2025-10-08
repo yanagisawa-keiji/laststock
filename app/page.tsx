@@ -14,63 +14,83 @@ export default function Home() {
     router.push(`/search?${qs.toString()}`);
   };
 
-  return (
-    <main className="min-h-dvh bg-gradient-to-b from-emerald-50 via-white to-emerald-100 text-center py-24">
-      <section className="mx-auto max-w-5xl px-6">
-        <div>
-          <h1 className="brand-title">Laststock.jp</h1>
-          <h2 className="text-3xl font-bold text-brand-primary">最後の一着を、見つけよう</h2>
-          <p className="mt-2 text-gray-600">
-            モチーフ・色・サイズからデッドストックを探せる検索サービス。
-          </p>
-        </div>
+  const quickTags = ["花", "蝶", "孔雀", "黒×金", "青緑", "F70", "M", "限定色"];
 
-        <div className="mt-10 mx-auto max-w-3xl">
-          <div className="rounded-2xl bg-white/90 backdrop-blur shadow-xl border border-emerald-200/50 p-6">
-            <form
-              onSubmit={handleSubmit}
-              className="grid grid-cols-1 md:grid-cols-4 gap-3"
-            >
-              <input
-                value={motif}
-                onChange={(e) => setMotif(e.target.value)}
-                className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
-                placeholder="モチーフ（例：バタフライ）"
-              />
-              <input
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-                className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
-                placeholder="色（例：青緑）"
-              />
-              <input
-                value={size}
-                onChange={(e) => setSize(e.target.value)}
-                className="rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
-                placeholder="サイズ（例：F70 / M）"
-              />
+  return (
+    <main className="min-h-dvh text-center py-20">
+      <section className="mx-auto max-w-6xl px-6">
+        {/* 題字 */}
+        <h1 className="brand-title">Laststock.jp</h1>
+
+        {/* キャッチ */}
+        <h2 className="mt-1 text-4xl md:text-5xl font-bold text-brand-primary/90 tracking-[0.02em]">
+          最後の一着を、見つけよう
+        </h2>
+        <p className="mt-3 text-gray-600">
+          モチーフ・色・サイズからデッドストックを探せる検索サービス。
+        </p>
+
+        {/* 検索カード */}
+        <div className="mt-10 mx-auto max-w-4xl">
+          <div className="rounded-3xl bg-white/85 shadow-[0_10px_30px_rgba(0,0,0,.08)] ring-1 ring-emerald-200/50 backdrop-blur">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-3 p-5 md:p-6">
+              {/* motif */}
+              <div className="relative">
+                <input
+                  value={motif}
+                  onChange={(e) => setMotif(e.target.value)}
+                  className="w-full rounded-2xl border border-gray-200/80 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
+                  placeholder="モチーフ（例：バタフライ）"
+                />
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-300">🪶</span>
+              </div>
+
+              {/* color */}
+              <div className="relative">
+                <input
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  className="w-full rounded-2xl border border-gray-200/80 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
+                  placeholder="色（例：青緑）"
+                />
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-300">🎨</span>
+              </div>
+
+              {/* size */}
+              <div className="relative">
+                <input
+                  value={size}
+                  onChange={(e) => setSize(e.target.value)}
+                  className="w-full rounded-2xl border border-gray-200/80 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
+                  placeholder="サイズ（例：F70 / M）"
+                />
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-300">📏</span>
+              </div>
+
+              {/* submit */}
               <button
                 type="submit"
-                className="rounded-xl bg-brand-primary text-white px-4 py-2 font-medium hover:bg-brand-primary/90 transition"
+                className="rounded-2xl px-6 py-3 font-semibold text-white bg-[linear-gradient(135deg,#1e6f6d,theme(colors.emerald.500))] hover:brightness-110 active:brightness-95 transition shadow-md"
               >
                 探す
               </button>
             </form>
 
-            <div className="mt-4 text-sm text-gray-600">
+            {/* クイック例 */}
+            <div className="px-6 pb-5 text-sm text-gray-600 text-left">
               例：
               <button
                 type="button"
                 onClick={() => router.push("/search?motif=サルート+蝶")}
-                className="underline hover:no-underline"
+                className="ml-1 underline decoration-emerald-300 hover:decoration-emerald-500"
               >
                 サルート 蝶
               </button>
-              、
+              <span>、</span>
               <button
                 type="button"
                 onClick={() => router.push("/search?motif=孔雀+グリーン")}
-                className="underline hover:no-underline ml-2"
+                className="underline decoration-emerald-300 hover:decoration-emerald-500"
               >
                 孔雀 グリーン
               </button>
@@ -78,15 +98,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-3 text-sm">
-          {["花", "蝶", "孔雀", "黒×金", "青緑", "F70", "M", "限定色"].map((tag) => (
-            <span
+        {/* タグ群 */}
+        <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+          {quickTags.map((tag) => (
+            <button
               key={tag}
-              onClick={() => router.push(`/search?motif=${tag}`)}
-              className="rounded-full border border-emerald-300/60 px-3 py-1 bg-white shadow hover:bg-emerald-50 cursor-pointer"
+              onClick={() => router.push(`/search?motif=${encodeURIComponent(tag)}`)}
+              className="rounded-full border border-emerald-200 bg-white/90 px-3.5 py-1.5 text-sm text-emerald-900 shadow-sm hover:shadow transition hover:-translate-y-0.5"
             >
               #{tag}
-            </span>
+            </button>
           ))}
         </div>
       </section>
