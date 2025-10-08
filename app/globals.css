@@ -60,7 +60,7 @@ body{
 }
 
 /* ====== フォーム ====== */
-.grid{
+.ls-grid{
   display:grid;
   gap:12px;
   grid-template-columns: 1fr;
