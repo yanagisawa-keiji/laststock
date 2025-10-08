@@ -8,15 +8,14 @@ export const metadata: Metadata = {
   description: "モチーフ・色・サイズから探すデッドストック検索サービス。",
 };
 
-// 本文は明朝、日本語
 const noto = Noto_Serif_JP({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
 });
 
-// 題字は筆記体
-export const greatVibes = Great_Vibes({
+// レイアウト内で題字に使うならここで使う。exportはしない。
+const greatVibes = Great_Vibes({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
