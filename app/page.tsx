@@ -21,6 +21,7 @@ export default function Home() {
       <section className="mx-auto max-w-5xl px-6">
         {/* 題字＆タイトル：中央寄せ */}
         <h1 className="brand-title text-center">Laststock.jp</h1>
+        <p className="mt-2 text-xs text-gray-500 text-center">BUILD-MARK: v-center-1</p>
         <h2 className="mt-1 text-4xl md:text-5xl font-bold text-brand-primary/90 tracking-[0.02em] text-center">
           最後の一着を、見つけよう
         </h2>
