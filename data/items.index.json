@@ -19,41 +19,41 @@
     "image_url": "/placeholder/ptj713.jpg"
   },
   {
-    "id": "wacoal-salute-ptj713",
+    "id": "wacoal-salute-btj452",
     "brand": "Salute",
-    "series": "13G",
-    "sku": "PTJ713",
+    "series": "45G",
+    "sku": "BTJ452",
     "motif": [
-      "バタフライ",
-      "フローラル"
+      "孔雀",
+      "フェザー"
     ],
     "color": [
-      "青緑",
-      "黒×金"
+      "グリーン",
+      "ゴールド"
     ],
     "size": [
-      "F70",
-      "M"
+      "C70",
+      "L"
     ],
-    "image_url": "/placeholder/ptj713.jpg"
+    "image_url": "/placeholder/btj452.jpg"
   },
   {
-    "id": "wacoal-salute-ptj713",
+    "id": "wacoal-salute-set001",
     "brand": "Salute",
-    "series": "13G",
-    "sku": "PTJ713",
+    "series": "EX",
+    "sku": "SET001",
     "motif": [
-      "バタフライ",
-      "フローラル"
+      "レース",
+      "ローズ"
     ],
     "color": [
-      "青緑",
-      "黒×金"
+      "黒",
+      "ボルドー"
     ],
     "size": [
-      "F70",
+      "D75",
       "M"
     ],
-    "image_url": "/placeholder/ptj713.jpg"
+    "image_url": "/placeholder/set001.jpg"
   }
 ]

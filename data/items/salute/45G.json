@@ -1,12 +1,13 @@
-[
+
+ [
   {
-    "id": "wacoal-salute-ptj713",
+    "id": "wacoal-salute-btj452",
     "brand": "Salute",
-    "series": "13G",
-    "sku": "PTJ713",
-    "motif": ["バタフライ", "フローラル"],
-    "color": ["青緑", "黒×金"],
-    "size": ["F70", "M"],
-    "image_url": "/placeholder/ptj713.jpg"
+    "series": "45G",
+    "sku": "BTJ452",
+    "motif": ["孔雀", "フェザー"],
+    "color": ["グリーン", "ゴールド"],
+    "size": ["C70", "L"],
+    "image_url": "/placeholder/btj452.jpg"
   }
 ]

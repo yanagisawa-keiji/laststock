@@ -1,12 +1,12 @@
 [
   {
-    "id": "wacoal-salute-ptj713",
+    "id": "wacoal-salute-set001",
     "brand": "Salute",
-    "series": "13G",
-    "sku": "PTJ713",
-    "motif": ["バタフライ", "フローラル"],
-    "color": ["青緑", "黒×金"],
-    "size": ["F70", "M"],
-    "image_url": "/placeholder/ptj713.jpg"
+    "series": "EX",
+    "sku": "SET001",
+    "motif": ["レース", "ローズ"],
+    "color": ["黒", "ボルドー"],
+    "size": ["D75", "M"],
+    "image_url": "/placeholder/set001.jpg"
   }
 ]
