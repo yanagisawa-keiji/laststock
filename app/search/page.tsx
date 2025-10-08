@@ -85,8 +85,8 @@ function SearchClient() {
   return (
     <main className="min-h-dvh text-center py-16">
       <section className="mx-auto max-w-6xl px-6">
-        <h1 className="brand-title">Laststock.jp</h1>
-        <h2 className="text-3xl md:text-4xl font-bold text-brand-primary/90 mt-2">検索結果</h2>
+        <h1 className="brand-title text-center">Laststock.jp</h1>
+        <h2 className="text-3xl md:text-4xl font-bold text-brand-primary/90 mt-2 text-center">検索結果</h2>
 
         <div className="mt-3">
           <a href="/" className="text-sm underline text-emerald-800 hover:no-underline">← トップへ戻る</a>
