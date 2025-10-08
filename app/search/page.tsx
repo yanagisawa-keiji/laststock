@@ -1,5 +1,7 @@
+// app/search/page.tsx
 "use client";
-import { useEffect, useState } from "react";
+
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 function ItemCard(props: any) {
@@ -8,14 +10,15 @@ function ItemCard(props: any) {
     <div className="rounded-2xl border border-emerald-200/60 bg-white/90 backdrop-blur shadow-md p-4 flex gap-4">
       <div className="relative w-28 h-28 rounded-xl overflow-hidden border">
         {image_url ? (
-          // 画像置いてなければ <img> でOK（next/image未設定でも表示可）
           <img src={image_url} alt={sku || "item"} className="w-28 h-28 object-cover" />
         ) : (
           <div className="w-28 h-28 grid place-items-center text-xs text-gray-500">No Image</div>
         )}
       </div>
       <div className="text-left">
-        <div className="text-sm text-gray-500">{brand}{series ? ` / ${series}` : ""}</div>
+        <div className="text-sm text-gray-500">
+          {brand}{series ? ` / ${series}` : ""}
+        </div>
         <div className="text-lg font-semibold">{sku || "No SKU"}</div>
         <div className="mt-1 text-sm text-gray-700">モチーフ：{motif.join("・") || "―"}</div>
         <div className="text-sm text-gray-700">色：{color.join("・") || "―"}</div>
@@ -25,7 +28,7 @@ function ItemCard(props: any) {
   );
 }
 
-export default function SearchPage() {
+function SearchClient() {
   const sp = useSearchParams();
   const motif = sp.get("motif") || "";
   const color = sp.get("color") || "";
@@ -36,7 +39,10 @@ export default function SearchPage() {
   useEffect(() => {
     setLoading(true);
     const qs = new URLSearchParams({ motif, color, size }).toString();
-    fetch(`/api/search?${qs}`).then(r => r.json()).then(j => { setData(j); setLoading(false); });
+    fetch(`/api/search?${qs}`)
+      .then(r => r.json())
+      .then(j => { setData(j); setLoading(false); })
+      .catch(() => { setData({ total: 0, results: [] }); setLoading(false); });
   }, [motif, color, size]);
 
   return (
@@ -61,3 +67,14 @@ export default function SearchPage() {
     </main>
   );
 }
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div className="mt-10 text-gray-500 text-center">検索条件の読込中…</div>}>
+      <SearchClient />
+    </Suspense>
+  );
+}
+
+// どのみちSSGさせないほうが安全。ビルド時のCSRバイアウトを避ける保険。
+export const dynamic = "force-dynamic";
