@@ -1,27 +1,31 @@
-import "./globals.css";
-
-
+// app/layout.tsx
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+import "./globals.css";
+import { Noto_Serif_JP, Great_Vibes } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Laststock",
-  description: "最後の一着を、見つけよう。",
+  title: "Laststock.jp",
+  description: "モチーフ・色・サイズから探すデッドストック検索サービス。",
 };
+
+// 本文は明朝、日本語
+const noto = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+// 題字は筆記体
+export const greatVibes = Great_Vibes({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className="h-full">{/* ← ここ重要 */}
-<body className="min-h-screen bg-emerald-300 antialiased">{children}</body>
-
-
-
-
+    <html lang="ja">
+      <body className={noto.className}>{children}</body>
     </html>
   );
 }
-

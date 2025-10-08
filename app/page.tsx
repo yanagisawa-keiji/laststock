@@ -1,6 +1,8 @@
+// app/page.tsx
 "use client";
 import { useRouter } from "next/navigation";
 import { useState, FormEvent } from "react";
+import { greatVibes } from "./layout";
 
 export default function Home() {
   const [motif, setMotif] = useState("");
@@ -19,20 +21,21 @@ export default function Home() {
   return (
     <main className="min-h-dvh text-center py-20">
       <section className="mx-auto max-w-5xl px-6">
-        {/* 題字＆タイトル：中央寄せ */}
-        <h1 className="brand-title text-center">Laststock.jp</h1>
-        <p className="mt-2 text-xs text-gray-500 text-center">BUILD-MARK: v-center-1</p>
+        {/* 題字：筆記体＋中央 */}
+        <h1 className={`${greatVibes.className} brand-title text-center`}>Laststock.jp</h1>
+
+        
         <h2 className="mt-1 text-4xl md:text-5xl font-bold text-brand-primary/90 tracking-[0.02em] text-center">
-          最後の一着を、見つけよう
+          最後の一着を貴方の手に
         </h2>
         <p className="mt-3 text-gray-600 text-center">
           モチーフ・色・サイズからデッドストックを探せる検索サービス。
         </p>
 
-        {/* 検索カード（縦3段） */}
+        {/* 検索カード：縦3段固定（flex縦） */}
         <div className="mt-10 mx-auto max-w-2xl">
           <div className="rounded-3xl bg-white/85 shadow-[0_10px_30px_rgba(0,0,0,.08)] ring-1 ring-emerald-200/50 backdrop-blur">
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-3 p-5 md:p-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 p-5 md:p-6">
               <input
                 value={motif}
                 onChange={(e) => setMotif(e.target.value)}

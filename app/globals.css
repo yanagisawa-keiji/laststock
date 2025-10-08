@@ -59,15 +59,44 @@ body{
   padding: 20px;
 }
 
-/* ====== フォーム ====== */
-.ls-grid{
-  display:grid;
-  gap:12px;
-  grid-template-columns: 1fr;
+
+/* 色変数などはそのまま使ってOK */
+:root{
+  --brand: #1e6f6d;
+  --brand-soft:#f5b7a0;
+  --ink:#1f2937;
+  --muted:#6b7280;
+  --ring: 0 0 0 3px color-mix(in oklab, var(--brand) 30%, transparent);
+  --accent-gold: #b8860b;
 }
-@media (min-width: 768px){
-  .grid{ grid-template-columns: 1fr 1fr 1fr auto; }
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  color:var(--ink);
+  background: linear-gradient(to bottom, #e0f7fa, #f9ffff, #e6f2ff);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* 題字（フォントは next/font で付与済み） */
+.brand-title {
+  font-size: clamp(44px, 5vw, 48px);
+  font-weight: 400;
+  color: var(--accent-gold);
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  transition: transform .3s ease, color .3s ease;
+}
+.brand-title:hover {
+  transform: scale(1.03);
+  color: color-mix(in oklab, var(--accent-gold) 80%, #f5d67a);
+}
+
+/* ボタンのホバーに金の差し色（任意） */
+.btn:hover { background-color: var(--accent-gold); color: #fff; filter: brightness(1.05); }
 
 .input{
   width:100%;
@@ -152,19 +181,7 @@ body{
   color: color-mix(in oklab, var(--accent-gold) 80%, #f5d67a);
 }
 
-/* タイトル下線（さりげなくゴールドを反射） 
-.title {
-  position: relative;
-}
-.title::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 3px;
-  margin: 10px auto 0;
-  background: linear-gradient(90deg, var(--accent-gold), #d9a520, var(--accent-gold));
-  border-radius: 2px;
-}*/
+
 
 /* ボタン hover に金色差し込み */
 .btn:hover {
