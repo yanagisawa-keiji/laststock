@@ -8,7 +8,8 @@ import { useSearchParams } from "next/navigation";
 function ItemCard(props: any) {
   const { sku, brand, series, motif = [], color = [], size = [], image_url } = props;
   return (
-    <div className="rounded-2xl border border-emerald-200/60 bg-white/90 backdrop-blur shadow-md p-4 flex gap-4">
+    <div className="rounded-2xl border border-emerald-200/60 bg-white/95 shadow-md p-4 flex flex-col justify-between">
+
       <div className="relative w-28 h-28 shrink-0 rounded-xl overflow-hidden border bg-white">
         {image_url ? (
           <img src={image_url} alt={sku || "item"} className="w-full h-full object-cover" />
@@ -82,12 +83,12 @@ function SearchClient() {
         ) : data.total === 0 ? (
           <div className="mt-10 text-gray-500">該当なし。キーワードを緩めてください。</div>
         ) : (
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-            {data.results.map((it) => (
-              <ItemCard key={it.id} {...it} />
-            ))}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-stretch">
+           {data.results.map((it) => <ItemCard key={it.id} {...it} />)}
           </div>
+
         )}
+
       </section>
     </main>
   );
