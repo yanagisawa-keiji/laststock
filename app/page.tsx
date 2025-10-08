@@ -1,54 +1,50 @@
-"use client";
-
-import { useState, FormEvent } from "react";
-
 export default function Home() {
-  const [query, setQuery] = useState("");
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("検索ワード:", query);
-    // 後でAPI連携予定
-  };
-
   return (
-    <main
-      className="min-h-screen flex items-center justify-center bg-cover bg-center"
-      style={{
-        backgroundImage: "url('/fabric.jpg')",
-      }}
-    >
-      <div className="bg-white/90 backdrop-blur-md p-12 rounded-2xl shadow-lg border-2 border-[#d4af37] text-center max-w-2xl mx-4">
-        <h1 className="text-6xl font-serif text-[#d4af37] mb-6 tracking-wide">
-          Laststock.jp
-        </h1>
-        <p className="text-lg text-gray-700 mb-8 font-serif">
-          気になるサルートの最後の一枚はこちらです。
-        </p>
+    <main>
+      <section className="section">
+        <div className="container center">
+          <h2 className="brand-title">Laststock.jp</h2> {/* ← 追加 */}
+          <h1 className="title">
+            最後の一着を、<span style={{ color: "var(--brand)" }}>見つけよう</span>
+          </h1>
+          <p className="lead">
+            モチーフ・色・サイズからデッドストックを探せる検索サービス。
+          </p>
+        </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col sm:flex-row justify-center items-center gap-4"
-        >
-          <input
-            type="text"
-            placeholder="型番・モチーフを入力"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="px-6 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#d4af37] w-80 font-serif"
-          />
-          <button
-            type="submit"
-            className="px-8 py-3 rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-700 text-white font-semibold shadow-lg hover:scale-105 transform transition font-serif"
-          >
-            探す
-          </button>
-        </form>
+        <div className="container">
+          <div className="card">
+            <form className="grid">
+              <input
+                className="input"
+                placeholder="モチーフ（例：バタフライ）"
+              />
+              <input className="input" placeholder="色（例：青緑）" />
+              <input className="input" placeholder="サイズ（例：F70 / M）" />
+              <button className="btn" type="button">
+                探す
+              </button>
+            </form>
+            <div className="examples">
+              例：
+              <button>サルート 蝶</button>、
+              <button style={{ marginLeft: 8 }}>孔雀 グリーン</button>
+            </div>
+          </div>
 
-        <p className="text-sm text-gray-500 mt-8 font-serif">
-          © 2025 Laststock.jp
-        </p>
-      </div>
+          <div className="tags">
+            {["花", "蝶", "孔雀", "黒×金", "青緑", "F70", "M", "限定色"].map(
+              (t) => (
+                <span className="tag" key={t}>
+                  #{t}
+                </span>
+              )
+            )}
+          </div>
+
+          <div className="band" />
+        </div>
+      </section>
     </main>
   );
 }

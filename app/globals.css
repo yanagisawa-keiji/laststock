@@ -1,13 +1,193 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
+/* ====== 基本設定 ====== */
 
-body {
-  font-family: 'Noto Serif JP', serif;
-  background-color: #0a1a2f; /* 万一背景が読めないときの補助色 */
-  color: #333;
-  margin: 0;
-  padding: 0;
+/* 筆記体フォント：Great Vibes（上品でややクラシック） */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+:root{
+  --brand: #1e6f6d;
+  --brand-soft:#f5b7a0;
+  --ink:#1f2937;
+  --muted:#6b7280;
+  --ring: 0 0 0 3px color-mix(in oklab, var(--brand) 30%, transparent);
 }
 
-* {
-  box-sizing: border-box;
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", "Apple Color Emoji", "Segoe UI Emoji";
+  color:var(--ink);
+  background: linear-gradient(to bottom, #d1fae5 0%, #ffffff 50%, #c7f9e9 100%); /* emerald-200 → white → emerald-200 風 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ====== レイアウト ====== */
+.container{
+  max-width: 80rem; /* 1280px */
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.center{text-align:center;}
+.section{ padding: 96px 24px; }
+
+.title{
+  font-weight:700;
+  letter-spacing: -.02em;
+  line-height:1.1;
+  font-size: clamp(32px, 5vw, 56px);
+}
+.lead{
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: clamp(14px, 2.2vw, 18px);
+}
+
+/* ====== カード ====== */
+.card{
+  margin: 32px auto 0;
+  max-width: 56rem; /* 896px */
+  background: color-mix(in oklab, white 92%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1px solid color-mix(in oklab, var(--brand) 20%, transparent);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(2, 48, 38, 0.08);
+  padding: 20px;
+}
+
+/* ====== フォーム ====== */
+.grid{
+  display:grid;
+  gap:12px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px){
+  .grid{ grid-template-columns: 1fr 1fr 1fr auto; }
+}
+
+.input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  outline: none;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+.input:focus{
+  border-color: color-mix(in oklab, var(--brand) 60%, #d1d5db);
+  box-shadow: var(--ring);
+}
+
+.btn{
+  padding: 10px 16px;
+  border:0;
+  border-radius:12px;
+  background: var(--brand);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition: filter .15s ease, transform .02s ease;
+}
+.btn:hover{ filter: brightness(0.95); }
+.btn:active{ transform: translateY(1px); }
+
+/* ====== 例リンク/タグ ====== */
+.examples{ margin-top:10px; color:#6b7280; font-size: 14px; }
+.examples button{
+  background:none; border:0; color:inherit; text-decoration: underline; cursor:pointer;
+}
+.tags{
+  margin-top: 22px;
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+}
+.tag{
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #ffffff;
+  border:1px solid color-mix(in oklab, var(--brand) 35%, #e5e7eb);
+  box-shadow: 0 2px 6px rgba(2,48,38,.06);
+  font-size: 13px;
+}
+
+/* 余白帯（雰囲気用） */
+.band{ height: 96px; background: color-mix(in oklab, var(--brand) 12%, transparent); margin-top: 24px; border-radius: 12px; }
+.brand-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--brand);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transition: transform .3s ease, color .3s ease;
+}
+.brand-title:hover {
+  transform: scale(1.03);
+  color: color-mix(in oklab, var(--brand) 80%, #0f766e);
+}
+
+/* --- ゴールドアクセント設定 --- */
+:root {
+  --brand: #1e6f6d;           /* 既存青緑 */
+  --accent-gold: #b8860b;     /* 暗めのゴールド */
+}
+
+/* 題字：Laststock.jp */
+.brand-title {
+  font-family: 'Great Vibes', cursive;   /* ← 筆記体に変更 */
+  font-size: clamp(44px, 5vw, 48px);     /* やや大きめにして映える */
+  font-weight: 400;
+  color: var(--accent-gold);
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  transition: transform .3s ease, color .3s ease;
+}
+.brand-title:hover {
+  transform: scale(1.03);
+  color: color-mix(in oklab, var(--accent-gold) 80%, #f5d67a);
+}
+
+/* タイトル下線（さりげなくゴールドを反射） 
+.title {
+  position: relative;
+}
+.title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, var(--accent-gold), #d9a520, var(--accent-gold));
+  border-radius: 2px;
+}*/
+
+/* ボタン hover に金色差し込み */
+.btn:hover {
+  background-color: var(--accent-gold);
+  color: white;
+  filter: brightness(1.05);
+}
+/* タイトルフォントサイズ調整 */
+.title {
+  font-size: clamp(28px, 4vw, 28px);  /* 最大32px、画面幅に応じて可変 */
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+/* 背景グラデーション：淡いブルー */
+body {
+  background: linear-gradient(
+    to bottom,
+    #e0f7fa,   /* トップ：ごく淡いアクアブルー */
+    #f9ffff,   /* 中間：ほぼ白 */
+    #e6f2ff    /* 下部：ややクールな淡青 */
+  );
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Serif JP', serif;
 }
