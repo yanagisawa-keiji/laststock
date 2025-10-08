@@ -5,7 +5,7 @@ import { useState, FormEvent } from "react";
 export default function Home() {
   const [motif, setMotif] = useState("");
   const [color, setColor] = useState("");
-  const [size, setSize]   = useState("");
+  const [size, setSize] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e: FormEvent) => {
@@ -19,10 +19,8 @@ export default function Home() {
   return (
     <main className="min-h-dvh text-center py-20">
       <section className="mx-auto max-w-5xl px-6">
-        {/* 題字：中央揃え */}
+        {/* 題字＆タイトル：中央寄せ */}
         <h1 className="brand-title text-center">Laststock.jp</h1>
-
-        {/* キャッチ：中央揃え */}
         <h2 className="mt-1 text-4xl md:text-5xl font-bold text-brand-primary/90 tracking-[0.02em] text-center">
           最後の一着を、見つけよう
         </h2>
