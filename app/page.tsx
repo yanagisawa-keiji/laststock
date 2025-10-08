@@ -44,7 +44,7 @@ export default function Home() {
                 className="w-full max-w-md mx-auto rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
                 placeholder="モチーフ（例：バタフライ）" />
               <input value={color} onChange={(e)=>setColor(e.target.value)}
-                lassName="w-full max-w-md mx-auto rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
+                className="w-full max-w-md mx-auto rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
                 placeholder="色（例：青緑）" />
               <input value={size} onChange={(e)=>setSize(e.target.value)}
                 className="w-full max-w-md mx-auto rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 focus:border-brand-primary/40 transition"
